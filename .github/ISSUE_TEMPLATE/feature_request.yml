@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest an improvement for this edition
+labels: [ enhancement ]
+body:
+  - type: markdown
+    attributes:
+      value: Requests in Russian are fine too. Things that belong to the original extension may be better filed upstream (cata02222/SillyTavern-Microfiche).
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What are you trying to do, and what gets in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

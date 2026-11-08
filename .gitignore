@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+
+# Local snapshots and exported diagnostics must not ship with the extension.
+_backup-*/
+microfiche-diagnostics-*.json

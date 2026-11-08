@@ -1,0 +1,151 @@
+<div id="microfiche_settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>Microfiche</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+            <div class="mf-row">
+                <label class="checkbox_label" for="mf_enabled">
+                    <input id="mf_enabled" type="checkbox">
+                    <span data-i18n="On">On</span>
+                </label>
+                <div id="mf_status" class="mf-status" role="status" aria-live="polite" data-state="idle"></div>
+            </div>
+
+            <label class="checkbox_label" for="mf_savings">
+                <input id="mf_savings" type="checkbox">
+                <span data-i18n="Show tokens saved under each reply">Show tokens saved under each reply</span>
+            </label>
+
+            <div class="mf-lang-row">
+                <label for="mf_lang" data-i18n="Language">Language</label>
+                <select id="mf_lang" class="text_pole" data-i18n-aria="Extension language" aria-label="Extension language">
+                    <option value="auto" data-i18n="Follow SillyTavern">Follow SillyTavern</option>
+                    <option value="ru" data-i18n="Russian">Russian</option>
+                    <option value="en" data-i18n="English">English</option>
+                </select>
+            </div>
+
+            <div class="mf-section">
+                <div class="mf-section-title" data-i18n="Send as images">Send as images</div>
+                <div class="mf-grid">
+                    <label class="checkbox_label" for="mf_img_chat"><input id="mf_img_chat" type="checkbox"><span data-i18n="Chat history">Chat history</span></label>
+                    <label class="checkbox_label" for="mf_img_preset"><input id="mf_img_preset" type="checkbox"><span data-i18n="Preset">Preset</span></label>
+                    <label class="checkbox_label" for="mf_img_card"><input id="mf_img_card" type="checkbox"><span data-i18n="Character card">Character card</span></label>
+                    <label class="checkbox_label" for="mf_img_persona"><input id="mf_img_persona" type="checkbox"><span data-i18n="Persona">Persona</span></label>
+                    <label class="checkbox_label" for="mf_img_lorebook"><input id="mf_img_lorebook" type="checkbox"><span data-i18n="Lorebook">Lorebook</span></label>
+                </div>
+            </div>
+
+            <div class="mf-section" id="mf_lorebook_pick">
+                <div class="mf-row">
+                    <label for="mf_lorebook_mode" data-i18n="Lorebook pages">Lorebook pages</label>
+                    <select id="mf_lorebook_mode" class="text_pole" data-i18n-aria="Which lorebook entries go as images" aria-label="Which lorebook entries go as images">
+                        <option value="all" data-i18n="All lorebooks">All lorebooks</option>
+                        <option value="selected" data-i18n="Selected books only">Selected books only</option>
+                    </select>
+                </div>
+                <div id="mf_lorebook_selected">
+                    <div id="mf_lorebooks" class="mf-models" role="group" data-i18n-aria="Lorebooks to send as images" aria-label="Lorebooks to send as images"></div>
+                </div>
+                <small data-i18n="Inside an entry: the img marker sends it as an image, the keep marker keeps it as text.">Inside an entry: the img marker sends it as an image, the keep marker keeps it as text.</small>
+            </div>
+
+            <div class="mf-buttons">
+                <div id="mf_stats" class="menu_button menu_button_icon" data-i18n-title="See every image attached to your next request" title="See every image attached to your next request">
+                    <i class="fa-solid fa-images"></i>
+                    <span data-i18n="Preview">Preview</span>
+                </div>
+            </div>
+
+            <div class="inline-drawer mf-advanced">
+                <div class="inline-drawer-toggle inline-drawer-header">
+                    <span data-i18n="Advanced">Advanced</span>
+                    <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+                </div>
+                <div class="inline-drawer-content">
+                    <label for="mf_detail" data-i18n="Picture quality">Picture quality</label>
+                    <select id="mf_detail" class="text_pole">
+                        <option value="low" data-i18n="Low: up to 20× cheaper than text (OpenRouter only)">Low: up to 20× cheaper than text (OpenRouter only)</option>
+                        <option value="medium" data-i18n="Medium: up to 9.9× cheaper than text">Medium: up to 9.9× cheaper than text</option>
+                        <option value="high" data-i18n="High: up to 4.95× cheaper than text">High: up to 4.95× cheaper than text</option>
+                    </select>
+                    <small id="mf_quality_note" data-i18n="Lower is cheaper but gets more wrong. Medium is the sweet spot. High gets more details right. On AI Studio and Vertex, Low goes as Medium.">Lower is cheaper but gets more wrong. Medium is the sweet spot. High gets more details right. On AI Studio and Vertex, Low goes as Medium.</small>
+
+                    <label for="mf_keep" id="mf_keep_label" data-i18n="Keep newest as text">Keep newest as text</label>
+                    <div class="mf-row">
+                        <select id="mf_keep_mode" class="text_pole" data-i18n-aria="Keep newest measured in tokens or messages" aria-label="Keep newest measured in tokens or messages">
+                            <option value="tokens" data-i18n="Tokens">Tokens</option>
+                            <option value="messages" data-i18n="Messages">Messages</option>
+                        </select>
+                        <input id="mf_keep" class="text_pole" type="number" min="0" step="500" aria-describedby="mf_keep_note">
+                        <input id="mf_keep_messages" class="text_pole" type="number" min="1" step="1" data-i18n-aria="Number of newest messages to keep as text" aria-label="Number of newest messages to keep as text" aria-describedby="mf_keep_note">
+                    </div>
+                    <small id="mf_keep_note"></small>
+
+                    <label class="checkbox_label" for="mf_pack">
+                        <input id="mf_pack" type="checkbox">
+                        <span data-i18n="Pack preset, card, persona and lorebook tightly">Pack preset, card, persona and lorebook tightly</span>
+                    </label>
+                    <small data-i18n="Off keeps their line breaks, on more images.">Off keeps their line breaks, on more images.</small>
+
+                    <label for="mf_grouping" data-i18n="Setup image grouping">Setup image grouping</label>
+                    <select id="mf_grouping" class="text_pole" data-i18n-aria="How preset prompts are grouped into images" aria-label="How preset prompts are grouped into images">
+                        <option value="merged" data-i18n="Merge into fewer images">Merge into fewer images</option>
+                        <option value="positional" data-i18n="Keep each prompt in place">Keep each prompt in place</option>
+                    </select>
+                    <small data-i18n="Merging packs the ticked prompts into as few images as possible. Keeping each prompt in place draws one group per prompt, so World Info (before) and (after) stay where the preset puts them; it costs a few partly filled pages.">Merging packs the ticked prompts into as few images as possible. Keeping each prompt in place draws one group per prompt, so World Info (before) and (after) stay where the preset puts them; it costs a few partly filled pages.</small>
+
+                    <div class="mf-keep-row">
+                        <span data-i18n="Keep a prompt as text">Keep a prompt as text</span>
+                        <button id="mf_copy_keep" type="button" class="menu_button" data-i18n-title="Copy" title="Copy" data-i18n-aria="Copy prompt exemption marker" aria-label="Copy prompt exemption marker"><i class="fa-solid fa-copy" aria-hidden="true"></i> <span data-i18n="Copy">Copy</span></button>
+                    </div>
+                    <small><span data-i18n="Put">Put</span> <code>&lt;!-- microfiche:keep --&gt;</code> <span data-i18n="anywhere in that prompt.">anywhere in that prompt.</span><span data-i18n-title="With Squash system messages on, the entire merged block stays as text." title="With Squash system messages on, the entire merged block stays as text." data-i18n-aria="Squash system messages keeps the whole merged block as text" aria-label="Squash system messages keeps the whole merged block as text" class="fa-solid fa-circle-info mf-keep-info"></span></small>
+
+                    <div class="mf-section-title" id="mf_models_label" data-i18n="Models">Models</div>
+                    <small data-i18n="Gemini models on your current connection. Untick one to send it plain text.">Gemini models on your current connection. Untick one to send it plain text.</small>
+                    <div id="mf_models" class="mf-models" role="group" aria-labelledby="mf_models_label"></div>
+
+                    <div id="mf_experimental">
+                        <div class="mf-section-title" data-i18n="Other models (experimental)">Other models (experimental)</div>
+                        <label class="checkbox_label" for="mf_experimental_enabled">
+                            <input id="mf_experimental_enabled" type="checkbox">
+                            <span><span data-i18n="Enable for">Enable for</span> <span id="mf_experimental_model"></span></span>
+                        </label>
+                        <small data-i18n="Select Claude, GPT or another vision model in your connection settings, then enable it here.">Select Claude, GPT or another vision model in your connection settings, then enable it here.</small>
+                        <div id="mf_experimental_cost_row">
+                            <label for="mf_experimental_cost" data-i18n="Estimated tokens per image">Estimated tokens per image</label>
+                            <input id="mf_experimental_cost" class="text_pole" type="number" min="1" max="100000" step="1">
+                            <small data-i18n="Starts at 1,500 as a placeholder. Set this for your model; it controls estimates and whether images save enough tokens.">Starts at 1,500 as a placeholder. Set this for your model; it controls estimates and whether images save enough tokens.</small>
+                        </div>
+                    </div>
+
+                    <label class="checkbox_label" for="mf_notifications">
+                        <input id="mf_notifications" type="checkbox">
+                        <span data-i18n="Show “sent as images” notifications">Show “sent as images” notifications</span>
+                    </label>
+
+                    <div class="mf-section-title" id="mf_debug_label" data-i18n="Diagnostics">Diagnostics</div>
+                    <small data-i18n="Keeps a short log of what Microfiche decided. Export it when reporting a problem — it never contains your chat text.">Keeps a short log of what Microfiche decided. Export it when reporting a problem — it never contains your chat text.</small>
+                    <div class="mf-buttons" role="group" aria-labelledby="mf_debug_label">
+                        <div id="mf_debug_export" class="menu_button menu_button_icon" data-i18n-title="Download the diagnostics log as a JSON file" title="Download the diagnostics log as a JSON file">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                            <span data-i18n="Export log">Export log</span>
+                        </div>
+                        <div id="mf_debug_copy" class="menu_button menu_button_icon" data-i18n-title="Copy the diagnostics log to the clipboard" title="Copy the diagnostics log to the clipboard">
+                            <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                            <span data-i18n="Copy">Copy</span>
+                        </div>
+                        <div id="mf_debug_clear" class="menu_button menu_button_icon" data-i18n-title="Discard the buffered diagnostics" title="Discard the buffered diagnostics">
+                            <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                            <span data-i18n="Clear">Clear</span>
+                        </div>
+                    </div>
+                    <small id="mf_debug_status"></small>
+                    <small id="mf_payload_status" role="status" aria-live="polite" data-i18n="No request audited yet.">No request audited yet.</small>
+                    <div id="mf_payload_map" data-i18n-aria="Attachment order of the last audited request" aria-label="Attachment order of the last audited request"></div>                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Upstream original
+    url: https://github.com/cata02222/SillyTavern-Microfiche/issues
+    about: Bugs that also exist in the unmodified original belong there.

@@ -1,0 +1,57 @@
+name: Bug report
+description: Something in this edition broke
+labels: [ bug ]
+body:
+  - type: markdown
+    attributes:
+      value: Reports in Russian are fine too. If the problem also exists in the unmodified original (cata02222/SillyTavern-Microfiche), consider reporting it there as well.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Steps to reproduce, what you expected, what actually happened. Screenshots welcome.
+    validations:
+      required: true
+  - type: input
+    id: st-version
+    attributes:
+      label: SillyTavern version
+      description: From the About screen, e.g. 1.13.1
+    validations:
+      required: true
+  - type: input
+    id: ext-version
+    attributes:
+      label: Microfiche version
+      description: From manifest.json or the extensions list, e.g. 0.4.1
+    validations:
+      required: true
+  - type: dropdown
+    id: model
+    attributes:
+      label: Model and API
+      options:
+        - Gemini (AI Studio)
+        - Gemini (Vertex)
+        - Gemini via custom/proxy
+        - Other vision model (experimental opt-in)
+        - Non-vision model
+  - type: dropdown
+    id: page-format
+    attributes:
+      label: Page format in use
+      options:
+        - png
+        - pdf
+        - low
+        - not sure
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics dump
+      description: Advanced → Diagnostics → Export. It contains metadata only — no chat text, URLs or base64.
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Console errors from the browser (F12) go here.

@@ -1,0 +1,11 @@
+{
+    "display_name": "Microfiche",
+    "loading_order": 1000,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "generate_interceptor": "microfiche_intercept",
+    "author": "AlhenaaS",
+    "version": "0.4.1"
+}
