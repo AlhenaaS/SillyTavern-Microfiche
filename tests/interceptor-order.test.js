@@ -49,6 +49,7 @@ const LIB_MODULES = {
 const HOST_BINDINGS = {
     '../../../i18n.js': { getCurrentLocale: () => 'en' },
     '../../../openai.js': { promptManager: { messages: [] } },
+    '../../../tool-calling.js': { ToolManager: { isToolCallingSupported: () => false } },
     '../../../slash-commands/SlashCommand.js': { SlashCommand: {} },
     '../../../slash-commands/SlashCommandArgument.js': { SlashCommandArgument: {}, ARGUMENT_TYPE: {} },
     '../../../world-info.js': { selected_world_info: [], world_info: { charLore: {} } },

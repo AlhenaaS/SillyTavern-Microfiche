@@ -26,6 +26,8 @@ import { GLYPH_H } from './lib/font.js';
 
 import { promptManager } from '../../../openai.js';
 
+import { ToolManager } from '../../../tool-calling.js';
+
 import { SlashCommand } from '../../../slash-commands/SlashCommand.js';
 
 import { SlashCommandArgument, ARGUMENT_TYPE } from '../../../slash-commands/SlashCommandArgument.js';
@@ -445,8 +447,21 @@ function connectionModels() {
     return modelsCache;
 }
 
+// True only when the current connection actually turns `extra.tool_invocations`
+// into real `tool_calls`/`tool` messages (openai.js:996). Other extensions
+// (e.g. POV Agents) reuse that same field purely as trace metadata for their
+// own raw-request results, which ST never re-sends to the model — archiving
+// past those is safe. Guarded in case ToolManager's shape ever changes.
+function realToolCallsActive() {
+    try {
+        return Boolean(ToolManager?.isToolCallingSupported?.());
+    } catch {
+        return true; // Unknown shape: fail toward the old, safer behavior.
+    }
+}
+
 function stopAt(m) {
-    if (m.extra?.tool_invocations?.length) return tr('a tool call');
+    if (m.extra?.tool_invocations?.length && realToolCallsActive()) return tr('a tool call');
     if (oai().media_inlining !== false && (m.extra?.media?.length || m.extra?.image)) return tr('an attached image or file');
     return null;
 }
